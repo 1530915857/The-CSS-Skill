@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>css背景特效</title>
+    <style>
+        body,html{
+            background-color: gray;
+        }
+        #box{
+            width: 200px;
+            height:200px;
+            background: #ffffff;
+            background-image: linear-gradient(90deg,rgba(0,255,127,0.5) 50%,transparent 0),
+                                linear-gradient(rgba(200,0,0,0.5) 50%,transparent 0);
+            background-size: 15px 15px;
+        }
+        #warp{
+            border:10px solid hsla(120,0%,100%,.2);
+            background: red;
+            background-clip: padding-box;
+        }
+    </style>
+</head>
+<body>
+   <div id="box">网格背景</div>
+   <div id="warp">半透明边框</div>
+   <h1>HSLA(H,S,L,A)</h1>
+   <p>H:Hue(色调)。0(或360)表示红色，120表示绿色，240表示蓝色，也可取其他数值来指定颜色。取值为：0 - 360</p>
+   <p>S:Saturation(饱和度)。取值为：0.0% - 100.0%</p>
+   <p>L:Lightness(亮度)。取值为：0.0% - 100.0%</p>
+   <p>A:Alpha透明度。取值0~1之间。</p>
+
+</body>
+</html>

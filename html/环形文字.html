@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>环形文字</title>
+    <style>
+        body{
+            font:bold 100% Helvetica,sans-serif;
+        }
+        @keyframes sklw {
+            from{
+                transform: rotate(0);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+        .circular{
+            width:100px;
+            height: 100px;
+            /*background-color: #00FA9A;*/
+            margin: 5em auto 0;
+            /*animation: sklw 2s infinite;*/
+         }
+        svg{
+            display: block;
+            /*background-color: lightgrey;*/
+            overflow: visible;
+            transition: 10s linear transform;
+        }
+        svg:hover{
+            transform: rotate(5turn);
+        }
+        .circular text{
+            fill: currentColor;
+        }
+        .circular path{
+            fill: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="circular">
+    <svg viewBox="0 0 100 100">
+        <path d="M 0,50 a 50,50 0 1,1 0,1 z" id="circle"/>
+        <text><textpath xlink:href="#circle">
+            正在加载，请稍后...
+        </textpath></text>
+    </svg>
+</div>
+<script>
+
+</script>
+</body>
+</html>
