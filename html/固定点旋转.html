@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#pointer{
+				width: 270px;
+				height: 270px;
+				background-image: url(../img/dial.png);
+				background-size: 100% 100%;
+				background-color: #000000;
+				border-radius: 50%;
+				margin: auto;
+				position: relative;
+				top: 30px;
+			}
+			#yuandian{
+				width:20px;
+				height:20px;
+				background-color: blue;
+				border-radius: 50%;
+				position: absolute;
+				margin:auto;
+				left:0;
+				top:0;
+				right:0;
+				bottom:0;
+			}
+			#needle{
+				width: 5px;
+				height: 120px;
+				background-color: yellow;
+				box-shadow: 2px 2px 4px #483D8B;
+				border-radius: 50%/90% 50% 10% 10%;
+				position: absolute;
+				left: 132px;
+				top: 20px;
+				transform-origin: center 95%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="pointer">
+  			<span id="yuandian"></span>
+  			<span id="needle"></span>
+  		</div>
+	</body>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script>
+		var a=document.getElementById("needle");
+		var x1,y1,x2,y2,w,h,jd;
+		a.addEventListener("touchstart",function (e) {
+		    var touches=e.touches[0];
+		    x1=touches.clientX;
+		    y1=touches.clientY;
+		    x2=$("#yuandian").offset().left+10;
+		    y2=$("#yuandian").offset().top+10;
+		})
+		a.addEventListener("touchmove",function (e) {
+		    var touches=e.touches[0];
+		    x1=touches.clientX;
+		    y1=touches.clientY;
+		    w=x1-x2;
+		    h=y1-y2;
+		    jd=parseInt(360*Math.atan(h/w)/(2*Math.PI));
+		    if(w>=0)
+		    {
+		        $("#needle").css("transform","rotate("+(90+jd)+"deg)");
+		    }
+		    else{
+		        $("#needle").css("transform","rotate("+(270+jd)+"deg)");
+		    }
+		});
+		a.addEventListener("touchend",function (e) {
+			if (w>=0) {
+				jd+=90;	
+			} else{
+				jd+=270;
+			}
+		    document.removeEventListener("touchmove",false);
+		});
+	</script>
+</html>
